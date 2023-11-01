@@ -6,6 +6,12 @@ from langchain.chains import ConversationChain
 from langchain.llms.bedrock import Bedrock
 from langchain.memory import ConversationBufferMemory
 
+#AWS S3 Configuration
+s3_bucket_name = "your bucket name" #enter your S3 bucket name
+s3_client = boto3.client("s3")
+
+#Streamlit configuration
+
 #set the background color of the webpage
 st.write(
     f"<style>body {{background-color: #EOF2F1; }}</style>",
@@ -33,6 +39,16 @@ bedrock_runtime = boto3.client(
     service_name="bedrock-runtime",
     region_name="us-east-1",
 )
+
+#Function to save conversation to S3 bucket 
+def save_to_s3(message):
+    timestamp = int(time.time())
+    key=f"conversation/{timestamp}.txt"
+    s3_client.put_object(
+        Bucket=s3_bucket_name,
+        Key=key,
+        Body=message.encode('utf-8')
+    )
 
 @st.cache_resource
 def load_llm():
@@ -76,4 +92,10 @@ if prompt := st.chat_input("What is up?"):
 
         message_placeholder.markdown(full_response)
 
+    #Save the conversation to S3 
+    conversation = f"User: {prompt}\nAssistant: {full_response}\n"
+    save_to_s3(conversation)
+
     st.session_state.messages.append({"role": "assistant", "content": full_response})
+
+
