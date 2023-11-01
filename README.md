@@ -4,7 +4,7 @@ ChatBedrock is a Streamlit-based chatbot application powered by AWS services. Th
 
 ## Overview
 
-ChatBedrock is a conversational chatbot that leverages an AWS language model to engage in text-based conversations with users. The app features the following functionalities:
+ChatBedrock is a conversational chatbot that leverages an AWS language model to engage in text-based conversations with users using Amazon Bedrock, Amazon S3, LangChain, and Streamlit. The app features the following functionalities:
 
 - User interaction through a chat interface.
 - Integration with Amazon Bedrock and Claude model from Anthropic
