@@ -6,6 +6,26 @@ from langchain.chains import ConversationChain
 from langchain.llms.bedrock import Bedrock
 from langchain.memory import ConversationBufferMemory
 
+#set the background color of the webpage
+st.write(
+    f"<style>body {{background-color: #EOF2F1; }}</style>",
+    unsafe_allow_html=True,
+)
+
+#attach an image to the webpage
+st.image("images/smileyface.png", width=100)
+
+#create a title 
+st.write(
+    f"<style>.title{{" +
+    "border: 2px solid #008cBA; " + 
+    "border-radius: 10px; " +
+    "}}</stile>",
+    unsafe_allow_html=True,
+)
+
+#st.markdown('<div class="title">ChatBedrock</div>',unsafe_allow_html=True)
+
 st.title("ChatBedrock")
 
 # Setup bedrock
