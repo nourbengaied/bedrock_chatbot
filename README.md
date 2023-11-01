@@ -1,6 +1,7 @@
 # ChatBedrock Streamlit App
 
 ChatBedrock is a Streamlit-based chatbot application powered by AWS services. This README provides an overview of the app.
+This project was inspired by an AWS tutorial, which served as the foundation for building this chatbot application.
 
 ## Overview
 
